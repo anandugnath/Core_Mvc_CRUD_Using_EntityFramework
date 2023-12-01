@@ -1,0 +1,45 @@
+﻿@model IEnumerable<core_mvc_CRUD_EF.Models.Units>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h4>Lists</h4>
+<br />
+<p>
+    <a asp-action="Create" class="btn btn-success">Create New</a>
+</p>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Unit_Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Unit_Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.UnitID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.UnitID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.UnitID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
