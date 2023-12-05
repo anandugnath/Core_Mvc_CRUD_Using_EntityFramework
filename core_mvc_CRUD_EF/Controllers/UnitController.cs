@@ -1,6 +1,7 @@
 ﻿using core_mvc_CRUD_EF.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Data.Entity;
 
 namespace core_mvc_CRUD_EF.Controllers
@@ -30,17 +31,32 @@ namespace core_mvc_CRUD_EF.Controllers
         // GET: UnitController/Create
         public ActionResult Create()
         {
+
+            ViewBag.Status_lst = new List<SelectListItem>
+            {  new SelectListItem{ Text="Active", Value="Active"},
+            new SelectListItem{Text="InActive",Value="InActive"},
+
+            };
             return View();
         }
 
         // POST: UnitController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(Units obj_units)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                _context.Add(obj_units);
+                _context.SaveChanges();
+                if (_context.ContextId != null)
+                {
+                    return RedirectToAction(nameof(Index));
+                }
+                else
+                {
+                    return View("Error");
+                }
             }
             catch
             {
