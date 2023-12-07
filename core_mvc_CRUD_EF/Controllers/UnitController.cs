@@ -18,7 +18,7 @@ namespace core_mvc_CRUD_EF.Controllers
         // GET: UnitController
         public ActionResult Index()
         {
-            IEnumerable<Units> categoryList = _context.Units.ToList();
+            IEnumerable<Units> categoryList = _context.Units.Where(i=>i.Status== "Active").ToList();
 
             return View(categoryList);
         }
@@ -100,7 +100,12 @@ namespace core_mvc_CRUD_EF.Controllers
         // GET: UnitController/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            //It is Soft Delete here only updating the status to InActive
+            var a=  _context.Units.Find(id);
+            a.Status = "InActive";
+            _context.Update(a);
+            _context.SaveChanges();
+            return  RedirectToAction(nameof(Index));
         }
 
         // POST: UnitController/Delete/5
