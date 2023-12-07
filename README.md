@@ -39,5 +39,17 @@ https://www.nuget.org/packages/System.Configuration.ConfigurationManager/8.0.0?_
 https://www.nuget.org/packages/Newtonsoft.Json/13.0.3?_src=template
 <br/>
 <br/>
+ 
 <br/>
+<h2>Unit Index View</h2>
+<a href="https://www.buymeacoffee.com/anandugnath" target="_blank"><img src="https://github.com/anandugnath/Core_Mvc_CRUD_Using_EntityFramework/blob/main/Index_unit.png" alt="Buy Me A Coffee" ></a>
+<br/>
+<h2>Create Page</h2>
+<a href="" target="_blank"><img src="https://github.com/anandugnath/Core_Mvc_CRUD_Using_EntityFramework/blob/main/Create_Unit.png" alt="Buy Me A Coffee" ></a>
+<br>
+
+<h2>Edit Page</h2>
+<a href="https://www.buymeacoffee.com/anandugnath" target="_blank"><img src="https://github.com/anandugnath/Core_Mvc_CRUD_Using_EntityFramework/blob/main/Edit_Unit.png" alt="Buy Me A Coffee" ></a>
+
+
  
