@@ -26,7 +26,8 @@ namespace core_mvc_CRUD_EF.Controllers
         // GET: UnitController/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            var a = _context.Units.Find(id);
+            return View(a);
         }
 
         // GET: UnitController/Create
