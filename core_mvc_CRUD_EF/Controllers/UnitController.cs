@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using System.Data.Entity;
 
 namespace core_mvc_CRUD_EF.Controllers
@@ -65,18 +66,29 @@ namespace core_mvc_CRUD_EF.Controllers
         }
 
         // GET: UnitController/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int Id)
         {
-            return View();
+
+            ViewBag.Status_lst = new List<SelectListItem>
+            {  new SelectListItem{ Text="Active", Value="Active"},
+            new SelectListItem{Text="InActive",Value="InActive"},
+
+            };
+            Units obj_units = new Units();
+            obj_units =  _context.Units.Find(Id);
+             
+            return View(obj_units);
         }
 
         // POST: UnitController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(Units ObjUnits)
         {
             try
             {
+                _context.Units.Update(ObjUnits);
+                _context.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
             catch
