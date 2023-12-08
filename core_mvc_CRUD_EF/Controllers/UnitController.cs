@@ -18,6 +18,7 @@ namespace core_mvc_CRUD_EF.Controllers
         // GET: UnitController
         public ActionResult Index()
         {
+            //Active units selecting using EF
             IEnumerable<Units> categoryList = _context.Units.Where(i=>i.Status== "Active").ToList();
 
             return View(categoryList);
@@ -26,6 +27,7 @@ namespace core_mvc_CRUD_EF.Controllers
         // GET: UnitController/Details/5
         public ActionResult Details(int id)
         {
+            //Finding the unit row by id
             var a = _context.Units.Find(id);
             return View(a);
         }
@@ -33,7 +35,8 @@ namespace core_mvc_CRUD_EF.Controllers
         // GET: UnitController/Create
         public ActionResult Create()
         {
-
+            //Create View interface 
+            //Filling status to dropdown
             ViewBag.Status_lst = new List<SelectListItem>
             {  new SelectListItem{ Text="Active", Value="Active"},
             new SelectListItem{Text="InActive",Value="InActive"},
@@ -49,6 +52,9 @@ namespace core_mvc_CRUD_EF.Controllers
         {
             try
             {
+
+                // create using EF 
+                //Always Post
                 _context.Add(obj_units);
                 _context.SaveChanges();
                 if (_context.ContextId != null)
@@ -69,15 +75,16 @@ namespace core_mvc_CRUD_EF.Controllers
         // GET: UnitController/Edit/5
         public ActionResult Edit(int Id)
         {
-
+            //Edit View UI Filling the Status to dropdown 
             ViewBag.Status_lst = new List<SelectListItem>
             {  new SelectListItem{ Text="Active", Value="Active"},
             new SelectListItem{Text="InActive",Value="InActive"},
 
             };
             Units obj_units = new Units();
+          //Finding the existing units by ID
             obj_units =  _context.Units.Find(Id);
-             
+             /
             return View(obj_units);
         }
 
@@ -88,6 +95,7 @@ namespace core_mvc_CRUD_EF.Controllers
         {
             try
             {
+                //Updating the Units
                 _context.Units.Update(ObjUnits);
                 _context.SaveChanges();
                 return RedirectToAction(nameof(Index));
