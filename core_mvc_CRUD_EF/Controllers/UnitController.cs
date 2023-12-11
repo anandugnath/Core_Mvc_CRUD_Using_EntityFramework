@@ -95,7 +95,7 @@ namespace core_mvc_CRUD_EF.Controllers
         {
             try
             {
-                //Updating the Units
+                //Updating the Units   
                 _context.Units.Update(ObjUnits);
                 _context.SaveChanges();
                 return RedirectToAction(nameof(Index));
